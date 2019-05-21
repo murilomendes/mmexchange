@@ -2,11 +2,13 @@ version: "3"
 
 services:
   postgres:
+    container_name: mmexchange-db
     image: "postgres:9.5"
     volumes:
       - postgres:/var/lib/postgresql/data
 
   app:
+    container_name: mmexchange
     depends_on:
       - "postgres"
     build: .
