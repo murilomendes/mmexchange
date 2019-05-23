@@ -9,18 +9,11 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.lis
 RUN apt-get update && apt-get install -qq -y --no-install-recommends \
 nodejs yarn build-essential libpq-dev imagemagick git-all nano
 
+ENV APP_HOME /mmexchange
 
-# Seta nosso path
-ENV INSTALL_PATH /mmexchange
+RUN mkdir $APP_HOME
+WORKDIR $APP_HOME
 
-# Cria nosso diretório
-RUN mkdir -p $INSTALL_PATH
+ADD . $APP_HOME
 
-# Seta o nosso path como o diretório principal
-WORKDIR $INSTALL_PATH
-
-# Seta o path para as Gems
-ENV BUNDLE_PATH /gems
-
-# Copia nosso código para dentro do container
-COPY . .
+RUN bundle install
