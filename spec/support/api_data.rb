@@ -1,19 +1,11 @@
 RSpec.configure do |config|
   config.before(:each) do   
-    stub_request(:get, /currencydatafeed.com/ )
+    stub_request(:get, /free.currconv.com/ )
     .with(headers: {
       'Accept'=>'*/*'
     }).to_return(status: 200, body: '
       {
-        "status": true,
-        "currency": [
-            {
-                "currency": "USD/BRL",
-                "value": "3.41325",
-                "date": "2018-04-20 17:22:59",
-                "type": "original"
-            }
-        ]
+        "BTC_BRL": 31792.018704
       }', headers: {})
   end
 end

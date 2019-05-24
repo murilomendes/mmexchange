@@ -9,10 +9,12 @@ class ExchangeService
     begin
       url = Rails.application.credentials[Rails.env.to_sym][:currency_api_url]
       token = Rails.application.credentials[Rails.env.to_sym][:currency_api_key]
-      params = {token: token, currency: "#{@from_currency}/#{@to_currency}"}
+      params = {q: "#{@from_currency}_#{@to_currency}", 
+                apiKey: token,
+                compact: 'ultra'}
 
       response = RestClient.get(url, params: params)
-      value = JSON.parse(response.body)['currency'].first['value'].to_f
+      value = JSON.parse(response.body)["#{@from_currency}_#{@to_currency}"].to_f
 
       @amount * value
     rescue RestClient::ExceptionWithResponse => e 
