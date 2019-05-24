@@ -5,7 +5,7 @@ RSpec.configure do |config|
       'Accept'=>'*/*'
     }).to_return(status: 200, body: '
       {
-        "BTC_BRL": 31792.018704
+        "USD_BRL": 31792.018704
       }', headers: {})
   end
 end

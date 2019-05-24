@@ -15,7 +15,7 @@ class ExchangeService
 
       response = RestClient.get(url, params: params)
       value = JSON.parse(response.body)["#{@from_currency}_#{@to_currency}"].to_f
-
+      
       @amount * value
     rescue RestClient::ExceptionWithResponse => e 
       e.response
