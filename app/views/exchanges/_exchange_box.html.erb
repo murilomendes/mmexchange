@@ -21,14 +21,20 @@
         <div class='destination_currency'>
           <div class='form-group'>
             <p class='title'>Moeda Desejada</p>
-            <%= select_tag 'to_currency', options_for_select(currency_list, 'EUR'), class: 'form-control', id: 'to_currency'%>
+              <%= select_tag 'to_currency', options_for_select(currency_list, 'EUR'), class: 'form-control', id: 'to_currency'%>
           </div>
+          <div class='form-group'>
+            <%= fa_stacked_icon "exchange alt", class: "fa-2x", id: 'change-currency' %>
+           <p class='title'>Inverter Moedas</p>
+          </div>
+         </div>
+
           <div class='form-group'>
             <input type='text' id='result' name='result' class='form-control' placeholder='Resultado' readonly>
           </div>
         </div>
         <div>
-          <button type='submit' class='btn btn-primary btn-exchange col-md-12'>CONVERTER</button>
+          <button id='CONVERTER' type='submit' class='btn btn-primary btn-exchange col-md-12' style='display:none;'>CONVERTER</button>
         </div>
       <% end %>
     </div>

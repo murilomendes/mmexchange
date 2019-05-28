@@ -12,5 +12,16 @@ $(document).ready ->
         error: (jqXHR, textStatus, errorThrown) ->
           alert textStatus
         success: (data, text, jqXHR) ->
-          $('#result').val("$ " + data.value.toFixed(2))
+          $('#result').attr('value', data.value.toFixed(2))
       return false;
+
+  $('#amount, #to_currency, #from_currency').change ->
+    $('form').submit()
+
+  $('#change-currency').click ->
+    from_currency = $('#from_currency').val();
+    to_currency = $('#to_currency').val();
+    $('#from_currency').val(to_currency)
+    $('#to_currency').val(from_currency);
+    $('form').submit()
+    return false;

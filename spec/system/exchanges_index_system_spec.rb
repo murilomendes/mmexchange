@@ -11,7 +11,7 @@ RSpec.describe 'Main Exchange Process', type: :system, js: true do
       fill_in 'amount', with: rand(0..9999)
     end
 
-    click_button "CONVERTER"
+    page.find_button("CONVERTER", visible: :hidden, wait: 1).click
 
     #save_and_open_page
     expect(page).to have_content('value')
